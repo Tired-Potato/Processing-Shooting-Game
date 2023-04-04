@@ -11,7 +11,7 @@ class Target {
   void update() {
     
     x = x + 2; // Move target horizontally
-    if(x >= x-600 || x <= 0+600) { // If target hits edge of window, reverse direction
+    if(x >= 600-62.5 || x <= 62.5) { // If target hits edge of window, reverse direction
       x = x*-1;
     }
     
