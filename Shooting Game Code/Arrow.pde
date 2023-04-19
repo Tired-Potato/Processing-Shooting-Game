@@ -35,7 +35,7 @@ void drawbow(){
 }
 void drawarrow(){
   translate(ax, ay);
-  angle = atan((ay - my)/(ax - mx));
+  angle = atan((ay - mouseY)/(ax - mouseX));
   pushMatrix();
   rotate(angle);
   strokeWeight(8);
@@ -46,15 +46,15 @@ void drawarrow(){
 
 
 void release(){
-    mx = mouseX;
-    my = mouseY;
     angle = atan((ay - my)/(ax - mx));
     ax -= cos(angle);
     ay -= sin(angle);
     pushMatrix();
     translate(ax, ay);
     rotate(angle);
-    drawarrow();
+    strokeWeight(8);
+    line(0, 0, -175, 0);
+    strokeWeight(1);
     popMatrix();
 }
 }
