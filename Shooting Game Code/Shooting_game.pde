@@ -4,12 +4,15 @@ void setup(){
 Arrow a = new Arrow(760, 620);
 Target t = new Target(400, 400);
 boolean flying = false;
+boolean hold = false;
+boolean held = false;
 void draw(){
   scene();
   a.update();
   t.update();
   mousemovement();
   boundaries();
+  mousereleased();
   if(flying==true){
     a.release();
   }
@@ -21,19 +24,27 @@ void scene(){
   fill(#08A719);
   rect(0, 400, 800, 800);
 }
-void mouseReleased(){
-  if(flying==false){
-    a.release();
-    
+void mousereleased(){
+  if (mousePressed){
+    hold = true;
+    held = true;
+  } else{
+  hold = false;
+  }
+  if ((hold==false)&&(held==true)){
+    flying = true;
   }
 }
 void mousemovement(){
-  if(mousePressed){
+  if((mousePressed)&&(flying==false)){
     a.drawarrow();
   }
 }
 void boundaries(){
   if((a.ay<=0) || (a.ax==t.tx)){
     flying = false;
+    held = false;
   }
 }
+
+  
