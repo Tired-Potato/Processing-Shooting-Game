@@ -12,7 +12,6 @@ void draw(){
   t.update();
   mousemovement();
   boundaries();
-  mousereleased();
   if(flying==true){
     a.release();
   }
@@ -24,16 +23,24 @@ void scene(){
   fill(#08A719);
   rect(0, 400, 800, 800);
 }
-void mousereleased(){
-  if (mousePressed){
-    hold = true;
-    held = true;
-  } else{
-  hold = false;
+void mouseReleased(){
+  if(flying == false){
+  flying = true;
+  a.my = mouseY;
+  a.mx=mouseX;
   }
-  if ((hold==false)&&(held==true)){
-    flying = true;
-  }
+  
+  //if (mousePressed){
+  //  hold = true;
+  //  held = true;
+  //} else{
+  //hold = false;
+  //}
+  //if ((hold==false)&&(held==true)){
+  //  a.mx = mouseX;
+  //  a.my = mouseY;
+  //  flying = true;
+  //}
 }
 void mousemovement(){
   if((mousePressed)&&(flying==false)){
@@ -41,10 +48,10 @@ void mousemovement(){
   }
 }
 void boundaries(){
-  if((a.ay<=0) || (a.ax==t.tx)){
-    flying = false;
-    held = false;
-  }
+  //if((a.ay<=0) || (a.ax==t.tx)){
+  //  flying = false;
+  //  held = false;
+  //}
 }
 
   
