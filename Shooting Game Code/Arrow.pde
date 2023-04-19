@@ -1,5 +1,5 @@
 class Arrow{
-  float ax, ay, mx, my, angle;
+  float ax, ay, mx, my, angle, angle2;
   Arrow(float x, float y){
     this.ax = x;
     this.ay = y;
@@ -21,7 +21,7 @@ void drawbow(){
   arc(30, 0, 175, 400, PI/2, PI*3/2);
   strokeWeight(2);
   line(30, -215, 30, 215);
-  strokeWeight(1);
+  strokeWeight(1);//draws drawn bow
   } else{
   fill(#671227);
   arc(0, 0, 200, 500, PI/2, PI*3/2);
@@ -31,21 +31,26 @@ void drawbow(){
   line(0, -230, 0, 230);
   strokeWeight(1);
   }
-  popMatrix();
+  popMatrix();//draws undrawn bow
 }
 void drawarrow(){
+  translate(ax, ay);
+  angle = atan((ay - my)/(ax - mx));
+  pushMatrix();
+  rotate(angle);
   strokeWeight(8);
-  line(ax, ay, ax+175, ay);
+  line(0, 0, -175, 0);
   strokeWeight(1);
+  popMatrix();
 }
 
 
 void release(){
     mx = mouseX;
     my = mouseY;
-    angle = atan2((ay - mx),(ax - my));
-    ax -= cos(angle)/10;
-    ay -= sin(angle)/10;
+    angle = atan((ay - my)/(ax - mx));
+    ax -= cos(angle);
+    ay -= sin(angle);
     pushMatrix();
     translate(ax, ay);
     rotate(angle);
