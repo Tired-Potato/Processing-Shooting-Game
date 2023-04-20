@@ -1,17 +1,20 @@
+// ---Class Attributes---
 class Target {
   float tx, ty;
+  float xvel = 2;
   
 // ---Class Constructor---
-  Target(float ty) {
-    this.ty = ty;
+  Target(float x, float y) {
+    this.tx = x;
+    this.ty = y;
   }
 
 // ---Movement---
   void update() {
     
-    tx = tx + 2; // Move target horizontally
-    if(tx >= 800-62.5 || tx <= 62.5) { // If target hits edge of window, reverse direction
-      tx = tx*-1;
+    tx = tx + xvel; // Move target horizontally
+    if(tx >= 675 || tx <= 125) { // If target hits edge of window, reverse direction
+      xvel = -xvel;
     }
     
     //if(shot == true) {   // If target is shot, get rid of target
@@ -21,15 +24,17 @@ class Target {
 // ---Target---    
   noStroke(); // Draw target
   fill(#FF3700);
-  circle(tx,ty,125);
+  circle(tx,ty,250);
+  fill(#FFFFFF);
+  circle(tx,ty,200);
+  fill(#FF3700);
+  circle(tx,ty,150);
   fill(#FFFFFF);
   circle(tx,ty,100);
   fill(#FF3700);
-  circle(tx,ty,75);
-  fill(#FFFFFF);
   circle(tx,ty,50);
-  fill(#FF3700);
-  circle(tx,ty,25);
+  fill(#F4F539);
+  circle(tx,ty,20);
   }
   
 // ---Reset---
