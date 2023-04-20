@@ -8,7 +8,7 @@ boolean hold = false;
 boolean held = false;
 void draw(){
   scene();
-  a.update();
+  a.drawbow();
   t.update();
   mousemovement();
   boundaries();
@@ -29,18 +29,6 @@ void mouseReleased(){
   a.my = mouseY;
   a.mx=mouseX;
   }
-  
-  //if (mousePressed){
-  //  hold = true;
-  //  held = true;
-  //} else{
-  //hold = false;
-  //}
-  //if ((hold==false)&&(held==true)){
-  //  a.mx = mouseX;
-  //  a.my = mouseY;
-  //  flying = true;
-  //}
 }
 void mousemovement(){
   if((mousePressed)&&(flying==false)){
@@ -48,10 +36,17 @@ void mousemovement(){
   }
 }
 void boundaries(){
-  //if((a.ay<=0) || (a.ax==t.tx)){
-  //  flying = false;
-  //  held = false;
-  //}
+  if(a.ay<=170){
+    flying = false;
+    a.ax = a.ax2;
+    a.ay = a.ay2;
+  }
+}
+
+void hit(){
+  if((a.ax==t.tx)&&(a.ay==t.ty)){
+    
+  }
 }
 
   
