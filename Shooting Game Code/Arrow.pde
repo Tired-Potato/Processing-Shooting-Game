@@ -1,14 +1,12 @@
 class Arrow{
-  float ax, ay, mx, my, angle, angle2;
+  float ax, ay, ax2, ay2, mx, my, angle;
   Arrow(float x, float y){
     this.ax = x;
     this.ay = y;
+    this.ax2 = x;
+    this.ay2 = y;
   }
 
-
-void update(){
-  drawbow();
-}
 
 void drawbow(){
   pushMatrix();
@@ -47,8 +45,8 @@ void drawarrow(){
 
 void release(){
     angle = atan((ay - my)/(ax - mx));
-    ax -= cos(angle);
-    ay -= sin(angle);
+    ax -= cos(angle)*5;
+    ay -= sin(angle)*5;
     pushMatrix();
     translate(ax, ay);
     rotate(angle);
